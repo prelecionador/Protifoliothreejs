@@ -152,5 +152,19 @@
     "url": "https://presidenthunt.vercel.app/",
     "id": 21,
     "category": 1
+  },
+  {
+    "type": "Jogo educativo · EPT",
+    "title": "Jornada EPT",
+    "url": "https://jornadaept.vercel.app/",
+    "id": 22,
+    "category": 1
+  },
+  {
+    "type": "Jogo educativo · CBIE 2025",
+    "title": "Percurso: A História da Robótica",
+    "url": "https://percurso-jet.vercel.app/",
+    "id": 23,
+    "category": 1
   }
 ]

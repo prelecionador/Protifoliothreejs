@@ -26,7 +26,9 @@ const descriptions={
 'Chat de frases':'Projeto web de chat de frases, apresentado na categoria de inteligência artificial.',
 'Art Designer':'Trabalho de arte digital e design compartilhado no LinkedIn.',
 'Nesis':'Jogo criado com apoio de inteligência artificial.',
-'President Hunt':'Projeto de jogo da coleção de trabalhos freelancer.'};
+'President Hunt':'Projeto de jogo da coleção de trabalhos freelancer.',
+'Jornada EPT':'Jogo educativo voltado ao ensino de Educação Profissional e Tecnológica (EPT), abordando conteúdos de um curso ministrado sobre o tema.',
+'Percurso: A História da Robótica':'Jogo educativo que apresenta a história da robótica por meio de uma jornada interativa. Apresentado no Congresso Brasileiro de Informática na Educação (CBIE 2025).'};
 let saved={};try{saved=JSON.parse(localStorage.getItem('pedro-atlas-v1')||'{}')}catch{}
 const progress={seen:new Set((saved.seen||[]).filter(x=>projects.some(p=>p.id===x))),islands:new Set((saved.islands||[]).filter(x=>x>=0&&x<4)),shards:new Set((saved.shards||[]).filter(x=>x>=0&&x<12)),memory:!!saved.memory};
 let sound=false,audioCtx,toastTimer,night=!!saved.night,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,still=reduced,near=null,activeFilter=-1;
@@ -101,9 +103,10 @@ const iconPaths={
  bot:'M5 7h14v13H5zM12 7V3m-2 0h4M2 11v5m20-5v5M8 11h1m6 0h1M9 16h6',
  brush:'m10 15 9-12 3 3-12 9m0 0c-8-2-3 8-8 7 6 3 12-3 8-7',
  planet:'M19 12a7 7 0 1 1-14 0 7 7 0 0 1 14 0M6 5C-4 9 4 24 20 16c7-4 3-7-2-7',
- target:'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0m-4 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0M12 1v5m0 12v5M1 12h5m12 0h5'
+ target:'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0m-4 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0M12 1v5m0 12v5M1 12h5m12 0h5',
+ book:'M12 6C9 3 5 3 2 4v15c3-1 7-1 10 2 3-3 7-3 10-2V4c-3-1-7-1-10 2v15M5 8h4m-4 4h4m6-4h4m-4 4h4'
 };
-const projectIcons=['globe','cloud','chat','menu','building','heart','code','game','bike','plane','pizza','jar','star','skate','letter','pen','blocks','drop','bot','brush','planet','target'];
+const projectIcons=['globe','cloud','chat','menu','building','heart','code','game','bike','plane','pizza','jar','star','skate','letter','pen','blocks','drop','bot','brush','planet','target','book','bot'];
 function projectIcon(p){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${iconPaths[projectIcons[p.id]]||iconPaths.code}"/></svg>`}
 function kiosk(p,j,count){const isl=islands[p.category];const a=Math.PI*.13+j/count*Math.PI*2;const r=6.0+(j%3)*.7;const x=isl.x+Math.sin(a)*r,z=isl.z+Math.cos(a)*r;p.x=x;p.z=z;const g=new THREE.Group();g.position.set(x,1.30,z);scene.add(g);cyl(1,1.2,.2,'#e0d7b7',0,.1,0,g,16);cyl(.66,.83,.55,isl.color,0,.45,0,g,8);const rim=torus(.69,.055,'#f4e7c6',0,.75,0,g);rim.rotation.x=Math.PI/2;const core=box(.48,.48,.48,isl.color,0,1.15,0,g);core.rotation.set(.3,.4,.2);p.mesh=g;
  const label=document.createElement('button');label.className='marker project-icon';label.style.setProperty('--project-color',isl.color);label.innerHTML=projectIcon(p)+`<span class="project-caption">${escapeHTML(p.title)}</span>`;label.onclick=()=>openProject(p.id);label.setAttribute('aria-label','Explorar '+p.title);$('#labels').append(label);p.label=label;markers.push({element:label,pos:new THREE.Vector3(x,3.05,z),project:p})}

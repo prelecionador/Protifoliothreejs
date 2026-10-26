@@ -27,13 +27,15 @@ Abra http://localhost:8000 no navegador. Não abra index.html por duplo clique: 
 - dist/index.html: estrutura da página e menus.
 - dist/style.css: cores, fontes, layout e nomes dos projetos.
 - dist/app.js: mundo 3D, câmera, veículo, ícones, descrições e regras do jogo.
-- dist/projects.json: nomes, categorias e links dos 22 projetos.
+- dist/projects.json: nomes, categorias e links dos 24 projetos.
 - dist/vendor/three.js: Three.js 0.170.0, incluído localmente.
 - dist/vendor/THREE-LICENSE.txt: licença MIT da biblioteca.
 
 Categorias em projects.json: 0 = Web; 1 = Jogos; 2 = Design; 3 = IA.
 Mantenha os IDs existentes: eles vinculam ícones e progresso aos projetos.
 Os textos descritivos dos projetos estão em descriptions, no arquivo app.js.
+
+Na trilha de Jogos, Jornada EPT aborda o ensino de Educação Profissional e Tecnológica em um curso ministrado sobre o tema. Percurso: A História da Robótica apresenta uma jornada interativa sobre a evolução da robótica e foi apresentado no CBIE 2025.
 
 ## Controles
 
